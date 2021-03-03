@@ -17,9 +17,9 @@ const { isLoggedIn, isNotLoggedIn, validateAuthData } = require("../helpers/midd
 // POST '/auth/signup'
 router.post('/signup', isNotLoggedIn, validateAuthData, async (req, res, next) => {
   try {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
-    const user = await User.findOne({ username });
+    const user = await User.findOne({ email });
 
     if (user) { 
       return next(createError(400)); // Bad Request
@@ -28,7 +28,7 @@ router.post('/signup', isNotLoggedIn, validateAuthData, async (req, res, next) =
     const salt = await bcrypt.genSalt(saltRounds);
     const hashPass = await bcrypt.hash(password, salt);
 
-    const newUser = await User.create({ username, password: hashPass });
+    const newUser = await User.create({ email, password: hashPass });
 
     newUser.password = "*";
 
@@ -50,9 +50,9 @@ router.post('/signup', isNotLoggedIn, validateAuthData, async (req, res, next) =
 // POST '/auth/login'
 router.post('/login', isNotLoggedIn, validateAuthData, async (req, res, next) => {
   try {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
     
-    const user = await User.findOne({ username });
+    const user = await User.findOne({ email });
     if (!user) return next(createError(404));  // Bad Request
 
     const passwordCorrect = await bcrypt.compare(password, user.password);
