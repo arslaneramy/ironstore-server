@@ -5,14 +5,17 @@ const { isLoggedIn } = require("../helpers/middleware");
 const createError = require("http-errors");
 const router = require("./auth.router");
 
-//profile
+// GET /api/users  - Get current user profile
 usersRouter.get("/", isLoggedIn, async (req,res,next) =>{
     try{
         // const logged = true;
         // const profile = true;
         const id = req.session.currentUser._id;
         let user = await User.findById(id);
-        res.json(user);
+
+        res
+            .status(200)
+            .json(user);
    } catch (err) {
        console.log(err)
        next(createError(404));
@@ -26,9 +29,10 @@ usersRouter.get("/edit", isLoggedIn, async (req,res,next) => {
         const logged = true;
         const profile = true;
 
-        const user = await User.findById(req.session.currentUser._id);
+        let user = await User.findById(req.session.currentUser._id);
         //res.json
-        res.render("profile/editDetails", { logged, profile, user }); 
+        res.status(200)
+        .json(user); 
     } catch (err){
         console.log(err);
         next(createError(404));
@@ -47,13 +51,13 @@ usersRouter.post("/edit", isLoggedIn, async (req, res, next) =>{
             shippingAddress,
         } = req.body;
 
-        //check the await to see if this is ok
+       
         await User.findOneAndUpdate(
             id,
             {
                 email,
                 password,
-                firstName,  // exmp if we add obj inside on model "name.firstName": firstName,
+                firstName,  // example: if we add obj inside on model "name.firstName": firstName
                 lastName,
                 shippingAddress,
                 
@@ -61,14 +65,15 @@ usersRouter.post("/edit", isLoggedIn, async (req, res, next) =>{
             { new: true }
         );
 
-        res.json(user); //<--- check this
+        res.json(user); 
     } catch (err) {
         console.log(err);
         next(createError(404));
     }
 });
 
-//????
+// use /upload maybe in the future for admin 
+
 // usersRouter.get("/upload", isLoggedIn, (req, res, next) => {
 //   res.json("profile/upload", { logged, profile });
 // });
