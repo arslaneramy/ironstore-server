@@ -28,7 +28,7 @@ usersRouter.get("/edit", isLoggedIn, async (req,res,next) => {
 
         const user = await User.findById(req.session.currentUser._id);
         //res.json
-        res.render("profile/editDetails", { logged, profile, user }); 
+        res.json( user ); 
     } catch (err){
         console.log(err);
         next(createError(404));
