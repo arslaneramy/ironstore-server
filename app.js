@@ -12,6 +12,7 @@ require("dotenv").config();
 const authRouter = require("./routes/auth.router");
 const usersRouter = require("./routes/users.router");
 const productsRouter = require("./routes/products.router");
+const cartRouter = require("./routes/cart.router");
 
 // MONGOOSE CONNECTION
 mongoose
@@ -63,6 +64,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/auth", authRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/products", productsRouter);
+app.use("/api/users/cart", cartRouter);
 
 // ERROR HANDLING
 //  Catch 404 and respond with error message
