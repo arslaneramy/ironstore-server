@@ -7,10 +7,12 @@ const userSchema = new Schema({
   firstName: {type: String, required: true },
   lastName: {type: String, required: true},
   shippingAddress: {type: String, required: true},
-  cart: [{
-    product: {type: mongoose.Schema.Types.ObjectId, ref: "Product"},
-    qty: { type: Number, min: 1, required: true }
-  }]
+  cart: [
+    {
+      product: {type: mongoose.Schema.Types.ObjectId, ref: "Product"},
+      qty: { type: Number, min: 1, required: true }
+    }
+]
 }, {
   timestamps: {
     createdAt: 'created_at',

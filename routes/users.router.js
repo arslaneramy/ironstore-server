@@ -8,8 +8,7 @@ const router = require("./auth.router"); // why router is in grey?
 // GET /api/users  - Get current user profile
 usersRouter.get("/", isLoggedIn, async (req, res, next) => {
   try {
-    // const logged = true;
-    // const profile = true;
+    
     const id = req.session.currentUser._id;
     let user = await User.findById(id);
 
@@ -37,14 +36,14 @@ usersRouter.get("/edit", isLoggedIn, async (req, res, next) => {
 });
 
 
-// POST /api/users/edit  - Posting changes to current user profile 
-usersRouter.post("/edit", isLoggedIn, async (req, res, next) => {
+// PUT /api/users  - Posting changes to current user profile 
+usersRouter.put("/", isLoggedIn, async (req, res, next) => {
   try {
     const id = req.session.currentUser._id;
 
     const { email, password, firstName, lastName, shippingAddress } = req.body;
 
-    await User.findOneAndUpdate(
+    const user = await User.findByIdAndUpdate(
       id,
       {
         email,
@@ -56,13 +55,14 @@ usersRouter.post("/edit", isLoggedIn, async (req, res, next) => {
       { new: true }
     );
 
-    res.json(user);
+    res
+      .status(200)
+      .json(user);
   } catch (err) {
     console.log(err);
     next(createError(404));
   }
 });
-
 
 
 
