@@ -1,0 +1,29 @@
+[{
+    "name": "Ironhack blue shirt",
+    "image": "blabla",
+    "description": "blue shirt",
+    "price": 20,
+    "reviews": ["great"],
+    "countInStock": 5
+  },
+
+  {
+    "name": "Ironhack dark hat",
+    "image": "ekldsfx",
+    "description": "black hat",
+    "price": 10,
+    "reviews": ["awesome"],
+    "countInStock": 3
+  },
+
+  {
+    "name": "Ironhack red mug",
+    "image": "ewdslkrf",
+    "description": "just a red mug",
+    "price": 15,
+    "reviews": ["love it"],
+    "countInStock": 10
+  }
+
+
+]
