@@ -17,7 +17,7 @@ const { isLoggedIn, isNotLoggedIn, validateAuthData } = require("../helpers/midd
 // POST '/auth/signup'
 router.post('/signup', isNotLoggedIn, validateAuthData, async (req, res, next) => {
   try {
-    const { email, password } = req.body;
+    const { email, password, firstName, lastName, shippingAddress } = req.body;
 
     const user = await User.findOne({ email });
 
@@ -28,7 +28,7 @@ router.post('/signup', isNotLoggedIn, validateAuthData, async (req, res, next) =
     const salt = await bcrypt.genSalt(saltRounds);
     const hashPass = await bcrypt.hash(password, salt);
 
-    const newUser = await User.create({ email, password: hashPass });
+    const newUser = await User.create({ email, firstName, lastName, shippingAddress, password: hashPass });
 
     newUser.password = "*";
 
