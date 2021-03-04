@@ -3,7 +3,7 @@ const usersRouter = express.Router();
 const User = require("../models/user.model");
 const { isLoggedIn } = require("../helpers/middleware");
 const createError = require("http-errors");
-const router = require("./auth.router");
+const router = require("./auth.router"); // why router is in grey?
 
 // GET /api/users  - Get current user profile
 usersRouter.get("/", isLoggedIn, async (req, res, next) => {

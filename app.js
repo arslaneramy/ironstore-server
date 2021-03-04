@@ -11,6 +11,9 @@ require("dotenv").config();
 
 const authRouter = require("./routes/auth.router");
 const usersRouter = require("./routes/users.router");
+const productsRouter = require("./routes/products.router");
+const cartRouter = require("./routes/cart.router");
+
 
 // MONGOOSE CONNECTION
 mongoose
@@ -51,7 +54,6 @@ app.use(
 
 // MAIN ROUTE
 
-
 // MIDDLEWARE
 app.use(logger("dev"));
 app.use(bodyParser.json());
@@ -62,7 +64,8 @@ app.use(express.static(path.join(__dirname, "public")));
 // ROUTER MIDDLEWARE
 app.use("/auth", authRouter);
 app.use("/api/users", usersRouter);
-
+app.use("/api/products", productsRouter);
+app.use("/api/cart", cartRouter);
 
 
 // ERROR HANDLING
