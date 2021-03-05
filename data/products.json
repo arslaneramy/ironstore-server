@@ -1,27 +1,45 @@
 [{
-    "name": "Ironhack blue shirt",
-    "image": "blabla",
-    "description": "blue shirt",
-    "price": 20,
-    "reviews": ["great"],
+    "name": "Ironhack mask",
+    "image": "/public/img/black-mask.png",
+    "description": "dark mask",
+    "price": 8,
+    "reviews": ["comfort"],
     "countInStock": 5
   },
 
   {
-    "name": "Ironhack dark hat",
-    "image": "ekldsfx",
-    "description": "black hat",
-    "price": 10,
-    "reviews": ["awesome"],
+    "name": "Ironhack case",
+    "image": "public/img/Iron-yoda-black.png",
+    "description": "black case",
+    "price": 12,
+    "reviews": ["may the force be with you"],
     "countInStock": 3
   },
 
   {
-    "name": "Ironhack red mug",
-    "image": "ewdslkrf",
-    "description": "just a red mug",
+    "name": "Ironhack white mug",
+    "image": "/public/img/mug.png",
+    "description": "just a white mug",
     "price": 15,
     "reviews": ["love it"],
+    "countInStock": 10
+  },
+
+  {
+    "name": "Ironhack white mug",
+    "image": "/public/img/mug.png",
+    "description": "just a white mug",
+    "price": 15,
+    "reviews": ["love it"],
+    "countInStock": 10
+  },
+
+  {
+    "name": "Ironhack travel mug",
+    "image": "public/img/Travel-Mug.png",
+    "description": "Best mug ever",
+    "price": 15,
+    "reviews": ["love it ♥"],
     "countInStock": 10
   }
 
