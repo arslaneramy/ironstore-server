@@ -1,4 +1,5 @@
-[{
+[
+  {
     "name": "Ironhack mask",
     "image": "/public/img/black-mask.png",
     "description": "dark mask",
@@ -6,7 +7,6 @@
     "reviews": ["comfort"],
     "countInStock": 5
   },
-
   {
     "name": "Ironhack case",
     "image": "public/img/Iron-yoda-black.png",
@@ -15,7 +15,6 @@
     "reviews": ["may the force be with you"],
     "countInStock": 3
   },
-
   {
     "name": "Ironhack white mug",
     "image": "/public/img/mug.png",
@@ -24,7 +23,6 @@
     "reviews": ["love it"],
     "countInStock": 10
   },
-
   {
     "name": "Ironhack white mug",
     "image": "/public/img/mug.png",
@@ -33,7 +31,6 @@
     "reviews": ["love it"],
     "countInStock": 10
   },
-
   {
     "name": "Ironhack travel mug",
     "image": "public/img/Travel-Mug.png",
@@ -42,6 +39,4 @@
     "reviews": ["love it ♥"],
     "countInStock": 10
   }
-
-
 ]
