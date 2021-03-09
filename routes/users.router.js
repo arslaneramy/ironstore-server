@@ -52,8 +52,10 @@ usersRouter.put("/", isLoggedIn, async (req, res, next) => {
     next(createError(404));
   }
 });
+
 // use /upload maybe in the future for admin
 // usersRouter.get("/upload", isLoggedIn, (req, res, next) => {
 //   res.json("profile/upload", { logged, profile });
 // });
+
 module.exports = usersRouter;
