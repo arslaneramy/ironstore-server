@@ -31,7 +31,11 @@ const app = express();
 app.use(
   cors({
     credentials: true,
-    origin: [process.env.PUBLIC_DOMAIN],
+    origin: [
+      process.env.PUBLIC_DOMAIN,
+      'http://ironstore-m3.herokuapp.com',         // <-- ADD
+    'https://ironstore-m3.herokuapp.com' 
+    ],
   })
 );
 
@@ -65,6 +69,12 @@ app.use("/auth", authRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/products", productsRouter);
 app.use("/api/users/cart", cartRouter);
+
+// ROUTE FOR SERVING REACT APP (index.html)
+app.use((req, res, next) => {
+  // If no previous routes match the request, send back the React app.
+  res.sendFile(__dirname + "/public/index.html");
+});
 
 // ERROR HANDLING
 //  Catch 404 and respond with error message
