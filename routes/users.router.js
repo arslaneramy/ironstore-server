@@ -3,7 +3,9 @@ const usersRouter = express.Router();
 const User = require("../models/user.model");
 const { isLoggedIn } = require("../helpers/middleware");
 const createError = require("http-errors");
-const router = require("./auth.router"); // why router is in grey?
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
+
 // GET /api/users  - Get current user profile
 usersRouter.get("/", isLoggedIn, async (req, res, next) => {
   try {
@@ -17,11 +19,11 @@ usersRouter.get("/", isLoggedIn, async (req, res, next) => {
     next(createError(404));
   }
 });
-// GET /api/users/edit?  - Get current user to edit profile
+
+// GET /api/users/edit  - Get current user to edit profile
 usersRouter.get("/edit", isLoggedIn, async (req, res, next) => {
   try {
-    const logged = true;
-    const profile = true;
+
     let user = await User.findById(req.session.currentUser._id);
     //res.json
     res.status(200).json(user);
@@ -30,23 +32,27 @@ usersRouter.get("/edit", isLoggedIn, async (req, res, next) => {
     next(createError(404));
   }
 });
+
 // PUT /api/users  - Posting changes to current user profile
 usersRouter.put("/", isLoggedIn, async (req, res, next) => {
   try {
     const id = req.session.currentUser._id;
     const { email, password, firstName, lastName, shippingAddress } = req.body;
-    const user = await User.findByIdAndUpdate(
+    const salt = await bcrypt.genSalt(saltRounds);
+    const hashPass = await bcrypt.hash(password, salt);
+    const updatedUser = await User.findByIdAndUpdate(
       id,
       {
         email,
-        password,
+        password:hashPass,
         firstName, // example: if we add obj inside on model "name.firstName": firstName
         lastName,
         shippingAddress,
       },
       { new: true }
     );
-    res.status(200).json(user);
+    req.session.currentUser = updatedUser;
+    res.status(200).json(updatedUser);
   } catch (err) {
     console.log(err);
     next(createError(404));
