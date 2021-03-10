@@ -8,16 +8,21 @@ cartRouter.get("/", isLoggedIn, (req, res, next) => {
   User.findById(req.session.currentUser._id)
     .populate("cart.product")
     .then((updatedUser) => {
-      res.send(updatedUser);
+      res.json(updatedUser.cart);
     })
     .catch((err) => next(createError(err)));
 });
 
+// DELETE /api/users/cart/:productId
 cartRouter.delete("/:productId", isLoggedIn, (req, res, next) => {
   const { _id } = req.session.currentUser;
   const { productId } = req.params;
 
-  User.findByIdAndUpdate(_id, { $pull: { cart: { product: productId } } }, {new: true})
+  User.findByIdAndUpdate(
+    _id,
+    { $pull: { cart: { product: productId } } },
+    { new: true }
+  )
     .populate("cart.product")
     .then((updatedUser) => {
       res.send(updatedUser);
@@ -35,14 +40,12 @@ cartRouter.put("/", isLoggedIn, (req, res, next) => {
     qty: qty,
   };
 
-  User.findByIdAndUpdate(_id, { $push: { cart: cartProduct } }, {new: true})
+  User.findByIdAndUpdate(_id, { $push: { cart: cartProduct } }, { new: true })
     .populate("cart.product")
     .then((updatedUser) => {
       res.send(updatedUser);
     })
     .catch((err) => next(createError(err)));
 });
-
-
 
 module.exports = cartRouter;
