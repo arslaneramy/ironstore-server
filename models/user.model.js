@@ -19,7 +19,7 @@ const userSchema = new Schema({
     updatedAt: 'updated_at'
   },
 }
-);
+); 
 
 const User = mongoose.model('User', userSchema);
 
