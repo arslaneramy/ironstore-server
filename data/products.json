@@ -30,5 +30,53 @@
     "price": 15,
     "reviews": ["love it ♥"],
     "countInStock": 10
+  },
+  {
+    "name": "Chop",
+    "img": "/img/ironBeers.png",
+    "description": "Let's drink now",
+    "price": 8,
+    "reviews": ["ITS FRIDAY! Beers!"],
+    "countInStock": 30
+  },
+  {
+    "name": "T-shirt Loading",
+    "img": "/img/Tshirt.png",
+    "description": "Loading T-shirt",
+    "price": 12,
+    "reviews": ["I need one for each day of the week"],
+    "countInStock": 10
+  },
+  {
+    "name": "T-shirt virus",
+    "img": "/img/Tshirt2.png",
+    "description": "Virus T-shirt",
+    "price": 12,
+    "reviews": ["F@ck! the 2020!"],
+    "countInStock": 10
+  },
+  {
+    "name": "T-shirt dev",
+    "img": "/img/Tshirt3.png",
+    "description": "T-shirt for developers",
+    "price": 12,
+    "reviews": ["0111 1010 0110 1000"],
+    "countInStock": 10
+  },
+  {
+    "name": "Iron Cap",
+    "img": "/img/cap.png",
+    "description": "A cool Cap",
+    "price": 12,
+    "reviews": ["With this the sun doesn't bother me"],
+    "countInStock": 15
+  },
+  {
+    "name": "Black & White Iron Cap",
+    "img": "/img/cap2.png",
+    "description": "Another cool Cap",
+    "price": 12,
+    "reviews": ["I look so much cooler now :)"],
+    "countInStock": 15
   }
 ]
