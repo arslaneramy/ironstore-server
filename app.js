@@ -13,6 +13,7 @@ const authRouter = require("./routes/auth.router");
 const usersRouter = require("./routes/users.router");
 const productsRouter = require("./routes/products.router");
 const cartRouter = require("./routes/cart.router");
+const paymentsRouter = require("./routes/payments.router");
 
 // MONGOOSE CONNECTION
 mongoose
@@ -69,6 +70,7 @@ app.use("/auth", authRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/products", productsRouter);
 app.use("/api/users/cart", cartRouter);
+app.use("/api/payments", paymentsRouter);
 
 // ROUTE FOR SERVING REACT APP (index.html)
 app.use((req, res, next) => {
