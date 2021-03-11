@@ -34,8 +34,8 @@ app.use(
     credentials: true,
     origin: [
       process.env.PUBLIC_DOMAIN,
-      'http://ironstore-m3.herokuapp.com',         // <-- ADD
-    'https://ironstore-m3.herokuapp.com' 
+      'http://ironstore-m3.herokuapp.com',         
+      'https://ironstore-m3.herokuapp.com' 
     ],
   })
 );
